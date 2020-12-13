@@ -1,0 +1,17 @@
+{
+    "name": "Vue Doer Web App",
+    "short_name": "Vue Doer",
+    "start_url": "index.html",
+    "display": "standalone",
+    "theme_color": "#D50000",
+    "background_color": "#D50000",
+    "icons": [{
+        "src": "images/favicon-192.png?utm",   
+        "sizes": "192x192",   
+        "type": "image/png" 
+    },{
+        "src": "images/favicon-144.png?utm",   
+        "sizes": "144x144",
+        "type": "image/png"
+    }]
+}

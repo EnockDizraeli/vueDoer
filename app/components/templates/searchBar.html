@@ -1,0 +1,19 @@
+<v-menu
+    v-model="menu"
+    offset-y
+>
+    <template v-slot:activator="{ on }">
+        <div data-wrapper style="width: 300px;" class="mt-4 ml-1">
+            <v-text-field
+                color="red accent-3"
+                elevation="0"
+                dense
+                solo-inverted
+                placeholder="Quick find"
+                prepend-inner-icon="mdi-magnify"
+                v-model="keyword"
+            ></v-text-field>
+        </div>
+    </template>
+    <search-results :results="results" :keyword="keyword"></search-results>
+</v-menu>

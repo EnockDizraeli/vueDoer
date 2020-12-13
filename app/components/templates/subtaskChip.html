@@ -1,0 +1,6 @@
+<v-chip v-if="subtasks.length > 0" :color="color" :text-color="textColor" :outlined="!completed">
+    <v-icon small left dense>
+        mdi-checkbox-marked-circle-outline
+    </v-icon>
+    {{ subtasks.filter(t => t.completed).length }}/{{ subtasks.length }}
+</v-chip>

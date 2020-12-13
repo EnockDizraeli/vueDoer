@@ -1,0 +1,6 @@
+<v-list>
+    <template v-for="(task, index) in tasks" :key="task.id">
+        <task :scheduleChip="scheduleChip" :projectChip="projectChip" :task="task" @delete="showSnackbar"></task>
+        <v-divider v-if="index < tasks.length - 1"></v-divider>
+    </template>
+</v-list>

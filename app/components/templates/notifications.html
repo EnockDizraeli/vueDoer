@@ -1,0 +1,25 @@
+<v-menu 
+    offset-y
+    open-on-hover
+>
+    <template v-slot:activator="{ on }">
+        <v-btn
+            v-on="on"
+            icon    
+        >
+            <v-icon>mdi-bell</v-icon>
+        </v-btn>
+    </template>
+    <v-card width="200">
+        <v-card-subtitle class="text-center text-uppercase">Notifications</v-card-subtitle>
+        <v-divider></v-divider>
+        <v-card-text class="d-flex flex-column align-center">
+            <v-icon
+                size="50px"
+            >
+                mdi-bell-outline
+            </v-icon>
+            <p>All Done</p>
+        </v-card-text>
+    </v-card>
+</v-menu>

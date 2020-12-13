@@ -1,0 +1,6 @@
+<v-chip v-if="task.schedule" color="transparent" text-color="green">
+    <v-icon small left dense>
+        mdi-calendar-clock
+    </v-icon>
+    {{ task.schedule | scheduleFilter }}
+</v-chip>

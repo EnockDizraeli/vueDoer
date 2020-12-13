@@ -1,0 +1,25 @@
+<v-container>
+    <v-container>
+        <div class="d-flex pa-2 align-center">
+            <h2>Today</h2><small class="ml-2 text--secondary">{{ today }}</small>
+        </div>
+        <create-task :project="project" :date="todayDate"></create-task>
+        <list-of-tasks :projectChip="true" :tasks="tasks"></list-of-tasks>
+        <v-row justify="center" v-if="tasks.length < 1">
+            <div class="text-center">
+                <v-icon size="60">mdi-calendar-today</v-icon><br/>
+                <b>You have no tasks for today.<br/>Tap add task to start</b>
+            </div>
+        </v-row>
+    </v-container>
+
+
+    <!--Loading indicator-->
+    <v-container style="height: 400px;" v-else> 
+        <v-skeleton-loader type="heading"></v-skeleton-loader>
+        <v-skeleton-loader type="table-heading"></v-skeleton-loader>
+        <v-skeleton-loader max-width="500" v-for="n in 10" type="list-item-avatar-two-line"></v-skeleton-loader>
+    </v-container>
+
+    <router-view></router-view>
+</v-container>

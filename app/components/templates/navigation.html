@@ -1,0 +1,43 @@
+<v-navigation-drawer color="grey lighten-5" v-model="drawer" app elevation="0">
+        <v-list nav dense>
+            <router-link :class="{'red lighten-4': routePath.includes(item.path)}" :to="item.path" tag="v-list-item" v-list-item v-for="item in navItems" :key="item.title" link>
+                <v-list-item-icon class="px-0">
+                    <v-icon :color="item.iconColor">{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-action>
+                    <small>{{ item.countFn() }}</small>
+                </v-list-item-action>
+            </router-link>
+
+            <v-list-group value="true" color="red">
+                <template v-slot:activator>
+                    <v-list-item-content>
+                        <v-list-item-title>Projects</v-list-item-title>
+                    </v-list-item-content>
+                </template>
+                
+                <router-link :class="{'red lighten-5': routePath.includes(project.id)}" tag="v-list-item" :to="{name: 'project', params: {id: project.id}}" v-for="project in projects">
+                    <v-list-item-action>
+                        <span class="project-dot" :style="'background-color: '+project.color"></span>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ project.name }}</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-list-item-action>
+                        <small>{{ getTaskCount(project.id) }}</small>
+                    </v-list-item-action>
+                </router-link>
+
+                <create-project/>
+            </v-list-group>
+    </v-list>
+
+    <v-snackbar v-model="snackbar">
+        Project created
+        <template v-slot:action="{on, attrs}">
+            <v-btn>Close</v-btn>
+        </template>
+    </v-snackbar>
+</v-navigation-drawer>

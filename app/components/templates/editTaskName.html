@@ -1,0 +1,14 @@
+<v-form @submit.prevent="updateTask" v-model="valid">
+    <v-text-field
+        autofocus
+        solo
+        dense
+        v-model="taskName"
+        :rules="nameRules"
+    ></v-text-field>
+    <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="$emit('complete')" text>Cancel</v-btn>
+        <v-btn @click="updateTask" :disabled="!valid" color="red accent-4" :dark="valid">Save</v-btn>
+    </v-card-actions>
+</v-form>

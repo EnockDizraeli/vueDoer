@@ -1,0 +1,30 @@
+<div>
+    <v-list-item v-show="!showing" @click="showing = true">
+        <v-icon color="red accent-4">
+            mdi-plus
+        </v-icon>
+        <v-list-item-content class="ml-2">
+            <v-list-item-title class="grey--text ma-0 pa-0 lighten-5">Add task</v-list-item-title>
+        </v-list-item-content>
+    </v-list-item>
+    
+    <v-form v-show="showing" @submit.prevent="createTask" v-model="valid">
+        <div class="d-flex align-center" style="max-width: 500px">
+            <v-text-field 
+                dense
+                solo
+                autofocus 
+                v-model="name" 
+                placeholder="Task name" 
+                clearable 
+                autocomplete="off"
+                style="margin-bottom: -1rem;"
+                :rules="nameRules"
+            ></v-text-field>
+            <schedule-task :date="date" ref="scheduler"></schedule-task>
+        </div>
+
+        <v-btn small @click="createTask" color="red accent-4" class="white--text" :disabled="!valid" elevation="0">Add task</v-btn>
+        <v-btn text @click="showing = false">Cancel</v-btn>
+    </v-form>
+</div>

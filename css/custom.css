@@ -1,0 +1,27 @@
+.project-dot{
+    background-color: orange;
+    border-radius: 100%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.task-checkbox{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+}
+.task-checkbox .v-messages{
+    display: none;
+}
+#preloader{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}

@@ -1,0 +1,73 @@
+<v-dialog 
+        v-model="dialog" 
+        min-width="500" 
+        max-width="600" 
+        ref="dialog"
+    >
+    <v-card v-if="task">
+        <v-card-title class="py-0">
+            <v-list-item class="pa-0">
+                <v-list-item-action>
+                    <div class="project-dot" :style="'background-color: '+project.color"></div>
+                </v-list-item-action>
+                <v-list-item-title>{{ project.name }}</v-list-item-title>
+                <v-list-item-action>
+                    <v-btn icon @click="goBack()">
+                        <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                </v-list-item-action>
+            </v-list-item>
+        </v-card-title>
+        <v-card-text>
+            <section class="d-flex align-start pa-0">
+                <v-checkbox class="task-checkbox" v-model="task.completed" on-icon="mdi-checkbox-marked-circle" off-icon="mdi-checkbox-blank-circle-outline"></v-checkbox>
+                <div class="d-flex align-start flex-column ml-3" style="width: 100%">
+                    <h1 v-if="!editMode" @click="editMode = true" class="mb-3 text-primary font-weight-thin align-self-stretch cursor-pointer" :class="{'text-decoration-line-through text--disabled': task.completed}">{{ task.name }}</h1>
+                    <edit-task-name v-else @complete="editMode = false" class="align-self-stretch" :task="task"></edit-task-name>
+                    <update-task-schedule :task="task"></update-task-schedule>
+
+                    <div class="d-flex align-self-stretch">
+                        <span class="ml-auto"></span>
+                        <task-menu @delete="goBack" :task="task"></task-menu>
+                    </div>
+                </div>
+            </section>
+
+            <v-tabs 
+                    color="red accent-5"
+                    v-model="tab"
+                >
+                <v-tabs-slider></v-tabs-slider>
+                <v-tab>Subtasks{{ subtasks.length > 0 ? ` (${subtasks.length})` : ''}}</v-tab>
+                <v-tab>Comments</v-tab>
+                <v-tab>Activity</v-tab>
+
+                <v-tabs-items v-model="tab">
+                    <v-tab-item>
+                        <div class="d-flex flex-column align-center pt-5 mt-5" v-if="subtasks.length <= 0">
+                            <v-icon size="50">mdi-format-list-bulleted</v-icon>
+                            <p>No subtasks</p>
+                        </div>
+                        <list-of-tasks :tasks="subtasks"></list-of-tasks>
+                        <create-subtask :task="task"></create-subtask>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <div class="d-flex flex-column align-center pt-5 mt-5" v-if="subtasks.length <= 0">
+                            <v-icon size="50">mdi-comment-outline</v-icon>
+                            <p>No comments</p>
+                        </div>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <div class="d-flex flex-column align-center pt-5 mt-5" v-if="subtasks.length <= 0">
+                            <v-icon size="50">mdi-clipboard-text</v-icon>
+                            <p>No activity</p>
+                        </div>
+                    </v-tab-item>
+                </v-tabs-items>
+            </v-tabs>
+        </v-card-text>
+    </v-card>
+    <v-card v-else>
+        <v-card-title>Loading..</v-card-title>
+    </v-card>
+</v-dialog>

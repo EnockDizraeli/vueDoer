@@ -1,0 +1,62 @@
+<v-container>
+    <v-container v-if="project">
+        <div class="d-flex pa-2">
+            <h2>{{ project.name }}</h2>
+            <v-spacer></v-spacer>
+
+            <v-menu>
+                <template v-slot:activator="{ on, attrs}">
+                    <v-btn icon v-on="on">
+                        <v-icon large>
+                            mdi-dots-horizontal
+                        </v-icon>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <edit-project :project="project"></edit-project>
+                    <delete-project :project="project"></delete-project>
+                </v-list>
+            </v-menu>
+        </div>
+        <create-task :project="project"></create-task>
+        <list-of-tasks :tasks="tasks"></list-of-tasks>
+        <v-row justify="center" v-if="tasks.length < 1">
+            <div class="text-center">
+                <v-icon size="60">mdi-package-variant</v-icon><br/>
+                <b>This project is currently empty.<br/>Tap add task to start</b>
+            </div>
+        </v-row>
+    </v-container>
+
+
+    <!--Loading indicator-->
+    <v-container style="height: 400px;" v-if="!project && projectExists"> 
+        <v-skeleton-loader type="heading"></v-skeleton-loader>
+        <v-skeleton-loader type="table-heading"></v-skeleton-loader>
+        <v-skeleton-loader max-width="500" v-for="n in 10" type="list-item-avatar-two-line"></v-skeleton-loader>
+    </v-container>
+
+    <!--NO Project error-->
+    <v-container style="height: 400px;" v-if="!projectExists">
+        <v-row justify="center" align-content="center" class="fill-height">
+            <v-card>
+                <v-card-title>
+                    <v-icon large class="mr-2">mdi-alert-circle</v-icon>
+                    Project not found
+                </v-card-title>
+                <v-card-text>
+                    It seems that this project does not exist.<br/>
+                    When this happens it is usually because the project has been deleted.<br/>
+                    It could also be because of an invalid URL<br/>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn @click="$router.replace('/inbox')" color="red accent-4" text>Go to inbox</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-row>
+    </v-container>
+
+    <router-view></router-view>
+</v-container>

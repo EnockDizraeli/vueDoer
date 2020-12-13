@@ -1,0 +1,44 @@
+<v-menu
+    offset-y
+    open-on-hover
+>
+    <template v-slot:activator="{ on }">
+        <v-btn
+            icon
+            v-on="on"
+        >
+            <v-icon>mdi-settings</v-icon>
+        </v-btn>
+    </template>
+
+    <v-list>
+        <v-list-item>
+            <v-list-item-avatar>
+                <v-img src="images/avatar.jpg"/>
+            </v-list-item-avatar>
+            <v-list-item-content>
+                <v-list-item-title>Guest</v-list-item-title>
+                <v-list-item-subtitle>no email address</v-list-item-subtitle>
+            </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+
+        <V-list dense>
+            <v-list-item link>
+                <v-list-item-action>
+                    <v-icon large>
+                        mdi-github-circle
+                    </v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title>View on github</v-list-item-title>
+                    <v-list-item-subtitle>Code is on github</v-list-item-subtitle>
+                </v-list-item-content>
+            </v-list-item>
+        </v-list>
+
+        <v-list-item>
+            <v-list-item-subtitle>Version 1.0.0</v-list-item-subtitle>
+        </v-list-item>
+    </v-list>
+</v-menu>

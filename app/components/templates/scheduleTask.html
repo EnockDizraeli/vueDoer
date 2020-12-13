@@ -1,0 +1,45 @@
+<v-dialog width="300" v-model="dialog">
+    <template v-slot:activator="{ on }">
+        <v-btn outlined color="red accent-4" v-on="on" style="margin-top: -0.5rem">
+            <v-icon left dense>mdi-calendar</v-icon>
+            {{ schedule | scheduleFilter }}
+        </v-btn>
+    </template>
+
+    <v-card> 
+        <v-date-picker
+            :min="today"
+            v-model="date"
+            color="red accent-4"
+            width="100%"
+        >
+        </v-date-picker>
+
+        <v-card-text>
+        <!--Time input-->
+            <v-menu :close-on-content-click="false" v-model="timeMenu">
+                <template v-slot:activator="timeCtx">
+                    <v-btn block text outlined v-on="timeCtx.on">
+                        <v-icon left dense>mdi-clock</v-icon>
+                        {{ timeText }}
+                    </v-btn>
+                </template>
+                <v-time-picker
+                    v-model="time"
+                    color="red accent-4"
+                >
+                <v-spacer></v-spacer>
+                <v-btn @click="clearTime().hideTimePicker()" text>Cancel</v-btn>
+                <v-btn @click="hideTimePicker" color="red accent-4" dark>Ok</v-btn>
+                </v-time-picker>
+            </v-menu>
+        <!--end date input-->
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn @click="clearSchedule().hideDialog()" text small>Clear</v-btn>
+            <v-btn @click="hideDialog" color="red accent-4" dark elevation="0" small>Ok</v-btn>
+        </v-card-actions>
+    </v-card>
+</v-dialog>

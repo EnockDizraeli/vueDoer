@@ -1,0 +1,14 @@
+<v-menu>
+    <template v-slot:activator="{on, attrs}">
+        <v-list-item-action class="ma-0" v-on="on">
+            <v-btn icon>
+                <v-icon>mdi-dots-horizontal</v-icon>
+            </v-btn>
+        </v-list-item-action>
+    </template>
+
+    <v-list>
+        <delete-task @delete="$emit('delete')" :task="task"></delete-task>
+        <move-task :task="task"></delete-task>
+    </v-list>
+</v-menu>

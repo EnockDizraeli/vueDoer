@@ -1,0 +1,26 @@
+<v-container>
+    <v-container>
+        <div class="d-flex pa-2 align-center">
+            <h2>Next 7 Days</h2>
+        </div>
+        
+        <section class="pa-2" v-for="day in days">
+            <div class="d-flex align-center">
+                <h3>{{ day.name }}</h3><small class="ml-2 text--secondary">{{ day.date }}</small>
+            </div>
+            <list-of-tasks :tasks="getTasks(day.moment)" :scheduleChip="false"></list-of-tasks>
+            <v-divider></v-divider>
+            <create-task :project="inbox" :date="day.dateISO"></create-task>
+        </section>
+    </v-container>
+
+
+    <!--Loading indicator-->
+    <v-container style="height: 400px;" v-else> 
+        <v-skeleton-loader type="heading"></v-skeleton-loader>
+        <v-skeleton-loader type="table-heading"></v-skeleton-loader>
+        <v-skeleton-loader max-width="500" v-for="n in 10" type="list-item-avatar-two-line"></v-skeleton-loader>
+    </v-container>
+
+    <router-view></router-view>
+</v-container>

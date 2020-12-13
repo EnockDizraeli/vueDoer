@@ -1,0 +1,8 @@
+<v-list>    
+    <router-link tag="v-list-item" :to="{name: 'project', params: {id: project.id}}" v-for="project in projects">
+        <v-list-item-action>
+            <span class="project-dot" :style="'background-color: '+project.color"></span>
+        </v-list-item-action>
+        <v-list-item-title>{{ project.name }}</v-list-item-title>
+    </router-link>
+</v-list>

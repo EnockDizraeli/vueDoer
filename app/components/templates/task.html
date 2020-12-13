@@ -1,0 +1,13 @@
+<div class="d-flex align-center pa-1 pt-2">
+    <v-checkbox class="task-checkbox" on-icon="mdi-checkbox-marked-circle" off-icon="mdi-checkbox-blank-circle-outline" v-model="task.completed"></v-checkbox>
+    <router-link class="cursor-pointer ml-2 pa-0" :to="taskPath" tag="v-list-item-content" :class="{'text-decoration-line-through text--disabled': task.completed}">
+        <v-list-item-title>{{ task.name }}</v-list-item-title>
+        <v-list-item-subtitle>
+            <subtask-chip :task="task"></subtask-chip>
+            <task-schedule-chip v-if="scheduleChip" :task="task"></task-schedule-chip>
+        </v-list-item-subtitle>
+    </router-link>
+
+    <task-project-chip v-if="projectChip" :task="task"></task-project-chip>
+    <task-menu :task="task" @delete="$emit('delete')"></task-menu>
+</div>

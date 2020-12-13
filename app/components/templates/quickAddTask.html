@@ -1,0 +1,51 @@
+<v-dialog v-model="dialog"
+    offset-y
+    :close-on-content-click="false" 
+    width="500"
+>
+    <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
+            <v-icon>mdi-plus</v-icon>
+        </v-btn>
+    </template>
+
+    <v-form @submit.prevent="createTask" v-model="valid">
+        <v-card>
+            <v-card-title>Create task</v-card-title>
+            <v-card-text>
+                <div class="d-flex flex-column pa-4 rounded-lg" style="border: 1px solid #ccc;">
+                    <div>
+                        <v-text-field 
+                            dense
+                            filled
+                            autofocus 
+                            v-model="name" 
+                            placeholder="Task name" 
+                            clearable 
+                            autocomplete="off"
+                            :rules="nameRules"
+                        ></v-text-field>
+                    </div>
+                    <div class="d-flex flex-column align-start">
+                        <schedule-task ref="scheduler"></schedule-task>
+                        <v-select
+                            dense
+                            max-width="40%"
+                            outlined
+                            v-model="projectID" 
+                            :items="projects"
+                            item-text="name"
+                            item-value="id"
+                        ></v-select>
+                        <v-spacer></v-spacer>
+                    </div>
+                </div>
+            </v-card-text>
+            <v-card-actions class="pa-3">
+                <v-spacer></v-spacer>
+                <v-btn :disabled="!valid" small @click="createTask" color="red accent-4" class="white--text" elevation="0">Add task</v-btn>
+                <v-btn text @click="dialog = false">Cancel</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-form>
+</v-dialog>
