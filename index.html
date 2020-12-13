@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Doer</title>
+    <link href="css/materialdesignicons.min.css" rel="stylesheet"/>
+    <link href="thirdParty/css/vuetify.min.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <link rel="icon" href="images/favicon.png"/>
+    <link rel="manifest" href="manifest.json"/>
+    <script src="thirdParty/vue.min.js"></script>
+    <script src="thirdParty/vuex.min.js"></script>
+    <script src="thirdParty/vue-router.min.js"></script>
+    <script src="thirdParty/vuetify.js"></script>
+</head>
+<body>
+    <container id="preloader">
+        <img style="border-radius: 100%;" width="90px" height="90px" src="images/favicon.png"/>
+        <div role="progressbar" aria-valuemin="0" aria-valuemax="100" 
+        class="v-progress-circular v-progress-circular--indeterminate" style="height: 32px; width: 32px;margin-top: 1rem;color: #D50000">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="22.857142857142858 22.857142857142858 45.714285714285715 45.714285714285715" style="transform: rotate(0deg);">
+                <circle fill="transparent" cx="45.714285714285715" cy="45.714285714285715" r="20" stroke-width="5.714285714285714" stroke-dasharray="125.664" stroke-dashoffset="125.66370614359172px" class="v-progress-circular__overlay">
+                </circle>
+            </svg>
+        </div>
+    </container>
+
+    <div id="app">
+        <v-app>
+            <app-header></app-header>
+            <navigation></navigation>
+            <v-main>
+                <router-view></router-view>
+            </v-main>
+            <snackbar ref="snackbar"></snackbar>
+        </v-app>
+    </div>
+</body>
+<script src="thirdParty/require.js" data-main="app/index"></script>
+<script src="register-service-worker.js"></script>
+</html>
