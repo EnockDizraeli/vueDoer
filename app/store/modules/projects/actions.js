@@ -1,4 +1,4 @@
-define(['store/modules/projects/mutationTypes','DAO/factory'],
+define(['store/modules/projects/mutationTypes','DAO/Factory'],
 (types, DAOFactory) => {
     let DAO = DAOFactory.create('project');
 

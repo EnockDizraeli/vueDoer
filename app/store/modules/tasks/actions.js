@@ -1,4 +1,4 @@
-define(['store/modules/tasks/mutationTypes','DAO/factory'],
+define(['store/modules/tasks/mutationTypes','DAO/Factory'],
 (types, DAOFactory) => {
     let DAO = DAOFactory.create('task');
 
