@@ -3,7 +3,7 @@ This is a project management web app heavily inspired by [todoist](https://www.t
 <br/><img align="center" src="https://github.com/EnockDizraeli/vueDoer/raw/main/screenshots/inbox.JPG" alt="Inbox Page"></a>
 
 ## Projects host your tasks
-<br/><img align="center" src="https://github.com/EnockDizraeli/vueDoer/raw/main/screenshots/inbox.JPG" alt="Project Page"></a>
+<br/><img align="center" src="https://github.com/EnockDizraeli/vueDoer/raw/main/screenshots/project.JPG" alt="Project Page"></a>
 
 ## A task can be edited, scheduled, and have subtasks added to it.
 <br/><img align="center" src="https://github.com/EnockDizraeli/vueDoer/raw/main/screenshots/task.JPG" alt="Task Page"></a>
