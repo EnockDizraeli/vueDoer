@@ -1,4 +1,4 @@
-define(['offline/DexieStorage'],
+define(['offline/dexieStorage'],
 (Storage) => {
 
     class BaseDAO{
